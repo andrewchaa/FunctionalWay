@@ -23,9 +23,7 @@ namespace FunctionalWay
         }
     }
 
-    public class None
-    {
-    }
+    public class None {}
 
     public class Option<T> : IEquatable<Option<T>>
     {
@@ -45,10 +43,13 @@ namespace FunctionalWay
             _isSome = false;
         }
         
-        public T Match(Func<T> None, Func<T, T> Some)
+        public R Match<R>(Func<R> None, Func<T, R> Some)
         {
             return _isSome ? Some(_value) : None();
         }
+
+        public Unit Match(Action None, Action<T> Some) 
+            => Match(None.ToFunc(), Some.ToFunc());
         
         public static implicit operator Option<T>(Some<T> some) => new Option<T>(some.Value); 
         public static implicit operator Option<T>(None _) => new Option<T>();
