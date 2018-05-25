@@ -3,10 +3,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>FunctionalWay</PackageId>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
     <Authors>Andrew Chaa</Authors>
     <AssemblyName>FunctionalWay</AssemblyName>
     <RootNamespace>FunctionalWay</RootNamespace>
-    <PackageIconUrl></PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/andrewchaa/FunctionalWay/master/src/Library/icon.jpeg</PackageIconUrl>
   </PropertyGroup>
 </Project>
