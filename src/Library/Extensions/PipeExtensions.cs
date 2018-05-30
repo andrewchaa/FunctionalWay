@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace FunctionalWay
+namespace FunctionalWay.Extensions
 {
-    public static class FunctionalHelpers
+    public static class PipeExtensions
     {
         /// <summary>
         /// Applies the given function to the input, resulting in the expected result. 

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace FunctionalWay.Tests
 {
-    public class UnitTest1
+    public class OptionTests
     {
         private string Greet(Option<string> name) 
             => name.Match(
