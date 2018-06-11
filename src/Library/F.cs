@@ -14,5 +14,10 @@ namespace FunctionalWay
 
         public static Unit Unit() => default(Unit);
         public static async Task<Unit> UnitAsync() => default(Unit);
+
+//        public static Either<TL, TR> Right<TR>(TR right)
+//        {
+//            return new Either<TL, TR>(right);
+//        }
     }
 }

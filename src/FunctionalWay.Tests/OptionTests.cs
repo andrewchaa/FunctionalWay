@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace FunctionalWay.Tests
@@ -15,6 +16,9 @@ namespace FunctionalWay.Tests
             => real
                 ? F.Some("Name")
                 : F.None;
+
+        private async Task<string> GetNameAsync() 
+            => "My name is Trinity";
 
         [Fact]
         public void Match_should_call_appropriate_func()
@@ -34,6 +38,18 @@ namespace FunctionalWay.Tests
             
             Assert.Equal(F.None, GetName(false));
         }
+
+//        [Fact]
+//        public async Task  Match_should_be_able_to_call_async_func()
+//        {
+//            var result = GetName(false);
+//            var name = await result.Match(
+//                None: async () => await GetNameAsync(),
+//                Some: (n) => n
+//            );
+//            
+//            Assert.Equal("My name is Trinity", name);
+//        }
 
         [Fact]
         public void Should_compare_cointained_value()

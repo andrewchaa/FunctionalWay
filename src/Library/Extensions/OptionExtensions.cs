@@ -1,7 +1,7 @@
 ﻿using System;
 using Unit = System.ValueTuple;
 
-namespace FunctionalWay
+namespace FunctionalWay.Extensions
 {
     public static class OptionExtensions
     {

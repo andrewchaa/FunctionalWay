@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using FunctionalWay.Extensions;
 using Unit = System.ValueTuple;
 
 namespace FunctionalWay
@@ -37,6 +39,11 @@ namespace FunctionalWay
         {
             return _isSome ? Some(_value) : None();
         }
+
+//        public async Task<R> MatchAsync<R>(Func<Task<R>> None, Func<T, Task<R>> Some)
+//        {
+//            return _isSome ? await Some(_value) : await None();
+//        }
 
         public Unit Match(Action None, Action<T> Some) 
             => Match(None.ToFunc(), Some.ToFunc());
