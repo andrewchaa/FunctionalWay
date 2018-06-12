@@ -39,18 +39,6 @@ namespace FunctionalWay.Tests
             Assert.Equal(F.None, GetName(false));
         }
 
-//        [Fact]
-//        public async Task  Match_should_be_able_to_call_async_func()
-//        {
-//            var result = GetName(false);
-//            var name = await result.Match(
-//                None: async () => await GetNameAsync(),
-//                Some: (n) => n
-//            );
-//            
-//            Assert.Equal("My name is Trinity", name);
-//        }
-
         [Fact]
         public void Should_compare_cointained_value()
         {
