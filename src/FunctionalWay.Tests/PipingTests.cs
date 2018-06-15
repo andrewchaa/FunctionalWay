@@ -22,6 +22,18 @@ namespace FunctionalWay.Tests
 
             Assert.Equal("Dog", Animals.Dog.Map(d => d.ToString()));
         }
+
+        [Fact]
+        public void Pipe_should_pipe_function()
+        {
+            Assert.Equal(3, 2.Pipe(n => n + 1));
+        }
+
+        [Fact]
+        public void Pipe_should_handle_action_method()
+        {
+            Assert.Equal(3, 3.Pipe(n => Console.WriteLine(3)));
+        }
        
     }
 }
