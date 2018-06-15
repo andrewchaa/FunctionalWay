@@ -7,7 +7,7 @@ A collection of helper functions to write C# code in a functional way
 ## Examples
 
 * [Pipe](#pipe)
-* [Option<T>]
+* [Option](#option)
 
 ### Pipe
 
@@ -27,7 +27,7 @@ public MoneyTransaction Parse(IList<string> columns)
 }
 ```
 
-### Option<T>
+### Option
 
 ```csharp
 public async Task<Option<RestaurantEvents>> GetBy(
@@ -53,6 +53,20 @@ public async Task<Option<RestaurantEvents>> GetBy(
             ? F.None
             : F.Some(restaurantEvent);
     }
+}
+
+var restaurantEvent = await _repository.GetBy(@event.Tenant.To<Tenant>(), 
+        new RestaurantId(restaurantId), @event.RestaurantEventId);
+await restaurantEvent.Match(
+    None: () =>
+    {
+        _logger.LogWarning($"Cannot find an existing restaurant {restaurantId} for restaurant event {@event.RestaurantEventId}");
+        return F.UnitAsync();
+    },
+    Some: e => _repository.Update(@event.Tenant.To<Tenant>(),
+        e.EventId,
+        e.RestaurantId,
+        EventStatus.Completed));
 }
 
 ```
