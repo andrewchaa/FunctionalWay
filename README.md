@@ -1,6 +1,6 @@
 # FunctionalWay
 
-[![NuGet](https://img.shields.io/nuget/v/FunctionalWay.svg?maxAge=3600)](https://www.nuget.org/packages/FunctionalWay/)
+[![NuGet](https://buildstats.info/nuget/FunctionalWay)](https://www.nuget.org/packages/FunctionalWay/)
 
 A collection of helper functions to write C# code in a functional way
 
