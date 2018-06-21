@@ -71,3 +71,19 @@ await restaurantEvent.Match(
 
 ```
 
+#### IsSome, IsNone
+
+```
+duration.Match(
+    None: () => { },
+    Some: d =>
+        DateTime.Today.AddDays(1).AddHours(5)
+            .Pipe(tomorrow5Am => LocalDateTime.FromLocal(tenant, tomorrow5Am))
+            .Pipe(localDateTime => new EventAction(localDateTime, localDateTime.ToUtc(), ActionType.BringOnline))
+            .Pipe(eventAction => Actions.Add(eventAction))
+    );
+
+if (duration.IsSome || !endDateTime.HasValue)
+    return;
+
+```
