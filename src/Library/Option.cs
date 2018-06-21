@@ -16,13 +16,12 @@ namespace FunctionalWay
     }
 
     public class None {}
-
     public class Option<T> : IEquatable<Option<T>>
     {
 
         private readonly T _value;
         private readonly bool _isSome;
-        private bool IsNone => !_isSome;
+        private bool _isNone => !_isSome;
 
         private Option(T value)
         {
@@ -30,6 +29,9 @@ namespace FunctionalWay
             _isSome = true;
         }
 
+        public bool IsSome => _isSome;
+        public bool IsNone => _isNone;
+        
         public Option()
         {
             _isSome = false;
@@ -40,11 +42,6 @@ namespace FunctionalWay
             return _isSome ? Some(_value) : None();
         }
 
-//        public async Task<R> MatchAsync<R>(Func<Task<R>> None, Func<T, Task<R>> Some)
-//        {
-//            return _isSome ? await Some(_value) : await None();
-//        }
-
         public Unit Match(Action None, Action<T> Some) 
             => Match(None.ToFunc(), Some.ToFunc());
         
@@ -54,10 +51,10 @@ namespace FunctionalWay
         public bool Equals(Option<T> other)
         {
             return _isSome == other._isSome &&
-                   (IsNone || _value.Equals(other._value));
+                   (_isNone || _value.Equals(other._value));
         }
 
-        public bool Equals(None none) => IsNone;
+        public bool Equals(None none) => _isNone;
         
         public override bool Equals(object obj)
         {
