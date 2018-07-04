@@ -9,6 +9,7 @@ A collection of helper functions to write C# code in a functional way
 * [Pipe](#pipe)
 * [Option](#option)
 
+
 ### Pipe
 
 ```csharp
@@ -69,6 +70,12 @@ await restaurantEvent.Match(
         EventStatus.Completed));
 }
 
+```
+
+You can use Map to apply func to the inner value.
+
+```csharp
+TempOfflineType = TempOffline.Map(v => v.To<TempOfflineType>());
 ```
 
 #### IsSome, IsNone
