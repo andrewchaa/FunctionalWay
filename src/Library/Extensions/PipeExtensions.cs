@@ -14,15 +14,6 @@ namespace FunctionalWay.Extensions
         /// <param name="this"></param>
         /// <param name="func">function to apply</param>
         /// <returns>Returns Output TResult</returns>
-        public static TResult Map<TSource, TResult>(this TSource @this, Func<TSource, TResult> func) 
-            => func(@this);
-
-        public static T Map<T>(this T @this, Action<T> action)
-        {
-            action(@this);
-            return @this;
-        }
-
         public static TResult Pipe<TSource, TResult>(this TSource @this, Func<TSource, TResult> func ) 
             => func(@this);
 

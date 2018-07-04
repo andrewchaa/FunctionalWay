@@ -45,6 +45,14 @@ namespace FunctionalWay.Tests
             Assert.Equal(F.Some(20), F.Some(20));
         }
 
+        [Fact]
+        public void Should_convert_inner_value()
+        {
+            var optionString = F.Some("true");
+            var optionBool = optionString.Map(bool.Parse);
+            
+            Assert.Equal(F.Some(true), optionBool);
+        }
 
     }
 

@@ -21,8 +21,8 @@ namespace FunctionalWay.Tests
             Assert.Equal(3, sum);
             Assert.Equal(3, Sum2.Curry()(1)(2));
             Assert.Equal(3, Sum2.Curry()
-                .Map(s => s(1))
-                .Map(s => s(2))
+                .Pipe(s => s(1))
+                .Pipe(s => s(2))
             );
         }
 
@@ -33,9 +33,9 @@ namespace FunctionalWay.Tests
             
             Assert.Equal(sum, Sum3.Curry()(1)(2)(3));
             Assert.Equal(sum, Sum3.Curry()
-                .Map(s => s(1))
-                .Map(s => s(2))
-                .Map(s => s(3))
+                .Pipe(s => s(1))
+                .Pipe(s => s(2))
+                .Pipe(s => s(3))
             );
         }
        

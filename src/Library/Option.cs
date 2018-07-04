@@ -45,6 +45,11 @@ namespace FunctionalWay
         public Unit Match(Action None, Action<T> Some) 
             => Match(None.ToFunc(), Some.ToFunc());
         
+        public Option<R> Map<R>(Func<T, R> func)
+        {
+            return _isSome ? F.Some(func(_value)) : F.None;
+        }
+
         public static implicit operator Option<T>(Some<T> some) => new Option<T>(some.Value); 
         public static implicit operator Option<T>(None _) => new Option<T>();
         
@@ -74,6 +79,7 @@ namespace FunctionalWay
         public static bool operator !=(Option<T> @this, Option<T> other) => !@this.Equals(other);
 
         public override string ToString() => _isSome ? $"Some({_value})" : "None";
+
     }
 
 

@@ -20,7 +20,7 @@ namespace FunctionalWay.Tests
         {
             var dog = Animals.Dog;
 
-            Assert.Equal("Dog", Animals.Dog.Map(d => d.ToString()));
+            Assert.Equal("Dog", Animals.Dog.Pipe(d => d.ToString()));
         }
 
         [Fact]
