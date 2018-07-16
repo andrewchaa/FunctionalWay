@@ -18,5 +18,6 @@ namespace FunctionalWay
         public static Left<L> Left<L>(L l) => new Left<L>(l);
         public static Right<R> Right<R>(R r) => new Right<R>(r);
 
+
     }
 }

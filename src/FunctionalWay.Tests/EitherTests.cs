@@ -1,4 +1,6 @@
-﻿using FunctionalWay.Eithers;
+﻿using System;
+using System.Text.RegularExpressions;
+using FunctionalWay.Eithers;
 using Xunit;
 
 
@@ -37,6 +39,7 @@ namespace FunctionalWay.Tests
                 Left: msg => msg,
                 Right: result => result.ToString()));
         }
+
         
     }
 }
