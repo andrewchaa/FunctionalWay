@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace FunctionalWay.Eithers
 {
@@ -28,6 +29,13 @@ namespace FunctionalWay.Eithers
             return _isLeft
                 ? Left(_leftValue)
                 : Right(_rightValue);
+        }
+
+        public async Task<RT> MatchAsync<RT>(Func<L, Task<RT>> Left, Func<R, Task<RT>> Right)
+        {
+            return _isLeft
+                ? await Left(_leftValue)
+                : await Right(_rightValue);
         }
         
         public static implicit operator Either<L, R>(L left) => new Either<L, R>(left);

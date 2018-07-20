@@ -19,7 +19,6 @@ namespace FunctionalWay.Tests
     
     public class EitherBindTests
     {
-        DateTime _now;
         Regex _bicRegex = new Regex("[A-Z]{11}");
 
         Either<string, BookTransfer> Handle(BookTransfer transfer)

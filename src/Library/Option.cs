@@ -44,6 +44,25 @@ namespace FunctionalWay
 
         public Unit Match(Action None, Action<T> Some) 
             => Match(None.ToFunc(), Some.ToFunc());
+
+        public async Task<R> Match<R>(Func<R> None, Func<T, Task<R>> Some)
+        {
+            if (_isSome) 
+                return await Some(_value);
+            
+            return None();
+        }
+
+        public async Task MatchAsync(Action None, Func<T, Task> Some)
+        {
+            if (_isSome)
+            {
+                await Some(_value);
+                return;
+            }
+
+            None();
+        } 
         
         public Option<R> Map<R>(Func<T, R> func)
         {
