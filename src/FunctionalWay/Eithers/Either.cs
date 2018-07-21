@@ -6,9 +6,9 @@ namespace FunctionalWay.Eithers
     
     public class Either<L, R>
     {
-        private bool _isLeft;
-        private L _leftValue;
-        private R _rightValue;
+        private readonly bool _isLeft;
+        private readonly L _leftValue;
+        private readonly R _rightValue;
 
         private Either(L leftValue)
         {
