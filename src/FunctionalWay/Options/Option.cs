@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FunctionalWay.Extensions;
 using Unit = System.ValueTuple;
 
-namespace FunctionalWay
+namespace FunctionalWay.Options
 {
     public class Some<T>
     {

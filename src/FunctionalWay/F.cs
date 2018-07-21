@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FunctionalWay.Eithers;
 using FunctionalWay.Extensions;
+using FunctionalWay.Options;
 using Unit = System.ValueTuple;
 
 namespace FunctionalWay
