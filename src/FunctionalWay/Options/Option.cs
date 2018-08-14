@@ -40,19 +40,24 @@ namespace FunctionalWay.Options
         {
             return _isSome ? Some(_value) : None();
         }
-
-        public Unit Match(Action None, Action<T> Some) 
-            => Match(None.ToFunc(), Some.ToFunc());
-
-        public async Task<R> Match<R>(Func<R> None, Func<T, Task<R>> Some)
+        
+        public async Task<R> Match<R>(Func<Task<R>> None, Func<T, Task<R>> Some)
         {
-            if (_isSome) 
-                return await Some(_value);
-            
-            return None();
+            return _isSome ? await Some(_value) : await None();
         }
 
-        public async Task MatchAsync(Action None, Func<T, Task> Some)
+        public void Match(Action None, Action<T> Some)
+        {
+            if (_isSome)
+            {
+                Some(_value);
+                return;
+            }
+
+            None();
+        } 
+
+        public async Task Match(Func<Task> None, Func<T, Task> Some)
         {
             if (_isSome)
             {
@@ -60,9 +65,9 @@ namespace FunctionalWay.Options
                 return;
             }
 
-            None();
+            await None();
         } 
-        
+
         public Option<R> Map<R>(Func<T, R> func)
         {
             return _isSome ? F.Some(func(_value)) : F.None;

@@ -35,8 +35,20 @@ namespace FunctionalWay.Tests
         public async Task Match_should_handle_action()
         {
             var result = await GetName(false);
-            await result.MatchAsync(
-                None: () => Console.Write("Nothing"),
+            await result.Match(
+                None: async () => Console.Write("Nothing"),
+                Some: async name => await PrintName(name)
+            );
+            
+            Assert.Equal(F.None, await GetName(false));
+        }
+
+        [Fact]
+        public async Task Match_should_handle_func_async()
+        {
+            var result = await GetName(false);
+            await result.Match(
+                None: async () => Console.Write("Nothing"),
                 Some: async name => await PrintName(name)
             );
             
